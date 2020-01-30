@@ -1,0 +1,22 @@
+{
+  "name": "class-schedule-alert",
+  "version": "1.0.0",
+  "description": "Sends an alert if the class schedule changes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Astr0nAT/class-schedule-alert.git"
+  },
+  "author": "Philipp Schuler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Astr0nAT/class-schedule-alert/issues"
+  },
+  "homepage": "https://github.com/Astr0nAT/class-schedule-alert#readme",
+  "dependencies": {
+    "webuntis": "^1.8.2"
+  }
+}
