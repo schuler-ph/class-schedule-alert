@@ -14,7 +14,7 @@ console.log(pw);
 const untis = new WebUntis(
   "htl1-innsbruck",
   "philipp.schuler",
-                                                                                                                                                                                                                            "shufflelp123$%&",
+  "",
   "neilo.webuntis.com"
 );
 
