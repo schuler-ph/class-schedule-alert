@@ -1,7 +1,8 @@
 const WebUntis = require("webuntis");
 const fs = require("fs")
 
-let pw;
+let username;
+let password;
 
 fs.readFile("pw.txt", 
 function(err, buf) {
@@ -9,12 +10,12 @@ function(err, buf) {
 }
 );
 
-console.log(pw);
+console.log(password);
 
 const untis = new WebUntis(
   "htl1-innsbruck",
   "philipp.schuler",
-                                                                                                                                                                                                                            "shufflelp123$%&",
+  "",
   "neilo.webuntis.com"
 );
 
