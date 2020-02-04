@@ -12,13 +12,30 @@ const untis = new WebUntis(
   "neilo.webuntis.com"
 );
 
-let currentUntisDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * 0);
+let currentUntisDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+
+console.log("Stundenplanänderungen vom " + currentUntisDate.getDate() + "." + (currentUntisDate.getMonth() + 1) + "." +
+    currentUntisDate.getFullYear() + ":");
 
 untis
   .login()
   .then(() => {
-    return untis.getOwnClassTimetableFor(currentUntisDate);
+    return untis.getOwnTimetableFor(currentUntisDate);
   })
   .then(timetable => {
-    timetable.forEach(element => console.log(element));
+    timetable.forEach(element => {
+        let subjectName = element.su.values().next().value.name;
+        let status = element.code;
+        let output = "";
+        switch(status){
+            case "cancelled":
+                output += subjectName + " fällt aus.";
+                break;
+            case "irregular":
+                output += subjectName + " wird suppliert von " + element.te.values().next().value.longname + ".";
+        }
+        if(output){
+            console.log(output);
+        }
+    });
   });
