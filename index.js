@@ -29,7 +29,6 @@ untis
       let schoolEndTime = 0;
     timetable.forEach(element => {
         let subjectName = element.su.values().next().value.name;
-        let subjectLongName = element.su.values().next().value.longname;
         let status = element.code;
         let output = "";
         switch(status){
