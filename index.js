@@ -1,5 +1,5 @@
 const WebUntis = require("webuntis");
-const fs = require("fs")
+const fs = require("fs");
 
 // Create username.txt and password.txt yourself and put your data into it
 let username = fs.readFileSync("username.txt").toString();
