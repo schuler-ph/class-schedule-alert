@@ -17,7 +17,7 @@ const days = 1; // Amount of days in the future; also works with negative number
 let currentUntisDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * days);
 
 let finalOutputString = "Stundenplan vom " + currentUntisDate.getDate() + "." + (currentUntisDate.getMonth() + 1) +
-    "." + currentUntisDate.getFullYear() + ":\n\n";
+    "." + currentUntisDate.getFullYear() + ":\n";
 
 untis
   .login()
@@ -60,7 +60,7 @@ untis
         finalOutputString += "\nSchulstart um " + schoolStartTime + ".\n";
         finalOutputString += "Schulende um " + schoolEndTime + ".";
     } else {
-        finalOutputString += "\nKein Unterricht."
+        finalOutputString += "Kein Unterricht."
     }
     console.log(finalOutputString);
   });
