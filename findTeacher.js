@@ -19,7 +19,7 @@ let currentUntisTime = new Date();
 currentUntisTime = currentUntisTime.getHours().toString() + currentUntisTime.getMinutes().toString();
 let currentLessonStarttime = 0;
 
-let starttimes = "800 850 955 1045 1140 1230 1320 1410 1515 1605 1655 1800";
+let starttimes = "800 850 955 1045 1140 1230 1320 1410 1515 1605 1655 1800 1845 1945 2030 2115 2200";
 starttimes = starttimes.split(' ');
 
 starttimes.forEach(element => {
@@ -28,36 +28,57 @@ starttimes.forEach(element => {
     }
 });
 
-console.log(currentLessonStarttime);
-
-/*
-untis.login().then(() => {
-    return untis.getClassTimetableForToday(526);
-}).then(timetable => {
-    timetable.forEach(element => {
-        if(currentLessonStarttime.toString() === element.startTime.toString()){
-            console.log(element);
-        }
-    });
-    }
-);
-*/
+console.log(currentLessonStarttime = 955);
 
 let className = "";
+let teacherShort = "";
 let teacherName = "";
 let roomName = "";
+let subjectName = "";
+let status;
+
+let teacherList = [];
+let contains = false;
 
 classes.forEach(element => {
-
     untis.login().then(() => {
         return untis.getClassTimetableForToday(element);
     }).then(timetable => {
         timetable.forEach(element => {
             if(currentLessonStarttime.toString() === element.startTime.toString()){
-                className = element.kl.values().next().value.name;
-                teacherName = element.te.values().next().value.longname;
-                roomName = element.ro.values().next().value.name;
-                console.log("Klasse: " + className + "; Proffessor: " + teacherName + "; Raum: " + roomName);
+                try{
+                    className = element.kl.values().next().value.name;
+                } catch{
+                    className = "-";
+                }
+                try{
+                    teacherShort = element.te.values().next().value.name;
+                } catch{
+                    teacherShort = "-";
+                }
+                try{
+                    teacherName = element.te.values().next().value.longname;
+                } catch{
+                    teacherName = "-";
+                }
+                try{
+                    subjectName = element.su.values().next().value.name;
+                } catch{
+                    subjectName = "-";
+                }
+                try{
+                    roomName = element.ro.values().next().value.name;
+                } catch{
+                    roomName = "-";
+                }
+                status = element.code;
+
+                if(status === undefined){
+                    status = "normal";
+                }
+
+                console.log("Klasse: " + className + "; Lehrer: " + teacherShort + " " + teacherName + "; Raum: " + roomName + "; Fach: " + subjectName + "; Status: " + status);
+                teacherList.push(teacherShort);
             }
         });
     })
