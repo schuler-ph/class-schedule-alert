@@ -36,7 +36,7 @@ untis
                 output += subjectName + " fällt aus.";
                 break;
             case "irregular":
-                output += subjectName + " suppliert von " + element.te.values().next().value.longname + ".";
+                output += subjectName + " suppliert von " + element.te.values().next().value.longname + "im Raum " + element.ro.values().next().value.name + ".";
         }
         if(status === "irregular" || status === undefined){
             if(element.startTime < schoolStartTime){
