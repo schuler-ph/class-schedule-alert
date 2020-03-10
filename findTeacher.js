@@ -1,9 +1,8 @@
 const WebUntis = require("webuntis");
 const fs = require("fs");
 
-// Create username.txt and password.txt yourself and put your data into it
-let username = fs.readFileSync("username.txt").toString();
-let password = fs.readFileSync("password.txt").toString();
+let username = process.env.untisUsername; // Erstelle eine Benutzervariable namens "untisUsername" mit deinem Bentzernamen
+let password = process.env.untisPassword; // Nach dem Erstellen den PC neustarten
 
 const untis = new WebUntis(
     "htl1-innsbruck", // Change this value to your own school id
@@ -40,7 +39,7 @@ starttimes.forEach(element => {
     }
 });
 
-console.log(currentLessonStarttime);
+console.log(currentLessonStarttime = 1320);
 
 let className = "";
 let teacherShort = "";
