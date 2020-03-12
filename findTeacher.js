@@ -1,8 +1,7 @@
 const WebUntis = require("webuntis");
-const fs = require("fs");
 
-let username = process.env.untisUsername; // Erstelle eine Benutzervariable namens "untisUsername" mit deinem Bentzernamen
-let password = process.env.untisPassword; // Nach dem Erstellen den PC neustarten
+let username = process.env.untisUsername; // Create a environment variable "untisUsername" with your username
+let password = process.env.untisPassword; // After creation restart PC
 
 const untis = new WebUntis(
     "htl1-innsbruck", // Change this value to your own school id
@@ -39,7 +38,10 @@ starttimes.forEach(element => {
     }
 });
 
-console.log(currentLessonStarttime = 800);
+if(currentLessonStarttime == 0){
+    currentLessonStarttime = 800;
+}
+console.log(currentLessonStarttime);
 
 let className = "";
 let teacherShort = "";
@@ -51,11 +53,12 @@ let status;
 let teacherList = [];
 let contains = false;
 
-let currentDate = new Date();
+const days = 0; // Amount of days in the future; also works with negative numbers and 0
+let currentUntisDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * days);
 
 classes.forEach(element => {
     untis.login().then(() => {
-        return untis.getClassTimetableFor(element, currentDate);
+        return untis.getClassTimetableFor(element, currentUntisDate);
     }).then(timetable => {
         timetable.forEach(element => {
             if(currentLessonStarttime.toString() === element.startTime.toString()){

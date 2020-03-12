@@ -1,8 +1,9 @@
 const WebUntis = require("webuntis");
-const fs = require("fs");
 
-let username = process.env.untisUsername; // Erstelle eine Benutzervariable namens "untisUsername" mit deinem Bentzernamen
-let password = process.env.untisPassword; // Nach dem Erstellen den PC neustarten
+let username = process.env.untisUsername; // Create a environment variable "untisUsername" with your username
+let password = process.env.untisPassword; // After creation restart PC
+
+// Note that I have NOT tested this on any other school.
 
 const untis = new WebUntis(
   "htl1-innsbruck", // Change this value to your own school id
@@ -12,7 +13,6 @@ const untis = new WebUntis(
 );
 
 const days = 1; // Amount of days in the future; also works with negative numbers and 0
-
 let currentUntisDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000 * days);
 
 let finalOutputString = "Stundenplan vom " + currentUntisDate.getDate() + "." + (currentUntisDate.getMonth() + 1) +
