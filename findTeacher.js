@@ -39,7 +39,7 @@ starttimes.forEach(element => {
     }
 });
 
-console.log(currentLessonStarttime = 1320);
+console.log(currentLessonStarttime = 800);
 
 let className = "";
 let teacherShort = "";
@@ -51,9 +51,11 @@ let status;
 let teacherList = [];
 let contains = false;
 
+let currentDate = new Date();
+
 classes.forEach(element => {
     untis.login().then(() => {
-        return untis.getClassTimetableForToday(element);
+        return untis.getClassTimetableFor(element, currentDate);
     }).then(timetable => {
         timetable.forEach(element => {
             if(currentLessonStarttime.toString() === element.startTime.toString()){
