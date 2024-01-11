@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Astr0nAT/class-schedule-alert#readme",
   "dependencies": {
-    "webuntis": "^1.8.2"
+    "webuntis": "^1.22.1"
   }
 }
